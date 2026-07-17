@@ -4,6 +4,7 @@ import {
   cleanHtml,
   formatOffices,
   formatSalary,
+  looksLikeReference,
   normalizeJobRef,
   quoteFilterValue,
   toDetail,
@@ -185,6 +186,22 @@ describe("normalizeJobRef", () => {
     expect(normalizeJobRef("just-one-slug")).toBeNull();
     expect(normalizeJobRef("not a job ref!")).toBeNull();
     expect(normalizeJobRef("")).toBeNull();
+  });
+});
+
+describe("looksLikeReference", () => {
+  test("accepts WK-style references", () => {
+    expect(looksLikeReference("SKIIL_kyzZ6Qw")).toBe(true);
+    expect(looksLikeReference("JOKO_K6yZbxR")).toBe(true);
+  });
+  test("accepts uuid references", () => {
+    expect(looksLikeReference("f67501c9-8263-4329-99c6-46d2fd9710f0")).toBe(true);
+  });
+  test("rejects slugs, composites, and garbage", () => {
+    expect(looksLikeReference("just-one-slug")).toBe(false);
+    expect(looksLikeReference("skiils/ai-engineer-h-f")).toBe(false);
+    expect(looksLikeReference("not a ref!")).toBe(false);
+    expect(looksLikeReference("lowercase_ref")).toBe(false);
   });
 });
 

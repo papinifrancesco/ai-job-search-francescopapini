@@ -28,6 +28,14 @@ export function algoliaApiKey(): string {
 export function algoliaIndex(): string {
   return envOr("WTTJ_ALGOLIA_INDEX", DEFAULTS.index)
 }
+/**
+ * The worldwide CMS jobs index, used only to resolve bare job references:
+ * its `reference` field carries the WK-style value ("SKIIL_kyzZ6Qw") that the
+ * market index exposes as the non-filterable `wk_reference`.
+ */
+export function algoliaLookupIndex(): string {
+  return envOr("WTTJ_ALGOLIA_LOOKUP_INDEX", "wk_cms_jobs_production")
+}
 export function apiBase(): string {
   return envOr("WTTJ_API_URL", DEFAULTS.apiBase).replace(/\/+$/, "")
 }
@@ -96,11 +104,14 @@ export interface AlgoliaResult {
 }
 
 /**
- * Run one query against the jobs index via Algolia's multi-query endpoint.
- * The `content-type: application/x-www-form-urlencoded` header with a JSON
- * body is Algolia's documented client behavior — do not "fix" it.
+ * Run one or more queries via Algolia's multi-query endpoint (one POST, one
+ * result per request). The `content-type: application/x-www-form-urlencoded`
+ * header with a JSON body is Algolia's documented client behavior — do not
+ * "fix" it.
  */
-export async function algoliaSearch(params: URLSearchParams): Promise<AlgoliaResult> {
+export async function algoliaMultiQuery(
+  requests: Array<{ indexName: string; params: URLSearchParams }>,
+): Promise<AlgoliaResult[]> {
   const host = `${algoliaAppId().toLowerCase()}-dsn.algolia.net`
   const url = `https://${host}/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.20.0)%3B%20Browser`
   const response = await fetchWithRetry(
@@ -116,15 +127,24 @@ export async function algoliaSearch(params: URLSearchParams): Promise<AlgoliaRes
         origin: SITE_BASE,
         referer: `${SITE_BASE}/`,
       },
-      body: JSON.stringify({ requests: [{ indexName: algoliaIndex(), params: params.toString() }] }),
+      body: JSON.stringify({
+        requests: requests.map((r) => ({ indexName: r.indexName, params: r.params.toString() })),
+      }),
     },
     "the Welcome to the Jungle search API",
   )
   if (!response) throw new Error("the Welcome to the Jungle search API returned 404 — is WTTJ_ALGOLIA_INDEX valid?")
 
   const body = (await response.json().catch(() => null)) as { results?: AlgoliaResult[] } | null
-  const result = body?.results?.[0]
-  if (!result) throw new Error("the Welcome to the Jungle search API returned an unexpected response shape")
+  if (!body?.results || body.results.length !== requests.length) {
+    throw new Error("the Welcome to the Jungle search API returned an unexpected response shape")
+  }
+  return body.results
+}
+
+/** Run one query against the configured jobs index. */
+export async function algoliaSearch(params: URLSearchParams): Promise<AlgoliaResult> {
+  const [result] = await algoliaMultiQuery([{ indexName: algoliaIndex(), params }])
   return result
 }
 
@@ -185,6 +205,45 @@ export function normalizeJobRef(input: string): JobRef | null {
   if (fromUrl) return { org: fromUrl[1], slug: fromUrl[2] }
   const bare = trimmed.match(/^([A-Za-z0-9][A-Za-z0-9._-]*)\/([A-Za-z0-9][A-Za-z0-9._-]*)$/)
   if (bare) return { org: bare[1], slug: bare[2] }
+  return null
+}
+
+/**
+ * Whether the input looks like a bare WTTJ job reference: either the WK-style
+ * value ("SKIIL_kyzZ6Qw" — search results expose it as `wk_reference`) or the
+ * market index's uuid `reference`. These need an Algolia lookup to resolve
+ * into the orgSlug/jobSlug pair the detail endpoint wants.
+ */
+export function looksLikeReference(input: string): boolean {
+  const trimmed = input.trim()
+  return (
+    /^[A-Z0-9]+_[A-Za-z0-9]+$/.test(trimmed) ||
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(trimmed)
+  )
+}
+
+/**
+ * Resolve a bare job reference to a JobRef with one multi-query POST: the
+ * market index resolves uuid `reference`s, the CMS lookup index resolves
+ * WK-style ones (where `reference` IS the WK value). First hit wins; `null`
+ * when neither index knows the reference.
+ */
+export async function lookupJobRef(reference: string): Promise<JobRef | null> {
+  const params = () =>
+    new URLSearchParams({
+      query: "",
+      hitsPerPage: "1",
+      filters: `reference:${quoteFilterValue(reference)}`,
+      attributesToRetrieve: "slug,organization",
+    })
+  const results = await algoliaMultiQuery([
+    { indexName: algoliaIndex(), params: params() },
+    { indexName: algoliaLookupIndex(), params: params() },
+  ])
+  for (const result of results) {
+    const hit = result.hits[0]
+    if (hit?.slug && hit.organization?.slug) return { org: hit.organization.slug, slug: hit.slug }
+  }
   return null
 }
 

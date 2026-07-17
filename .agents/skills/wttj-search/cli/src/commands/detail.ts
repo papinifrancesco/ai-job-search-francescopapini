@@ -1,7 +1,19 @@
-import { apiGet, normalizeJobRef, toDetail, writeError, type JobDetailResult, type WttjDetailJob } from "../helpers.js"
+import {
+  apiGet,
+  looksLikeReference,
+  lookupJobRef,
+  normalizeJobRef,
+  toDetail,
+  writeError,
+  type JobDetailResult,
+  type WttjDetailJob,
+} from "../helpers.js"
 
 export interface DetailOpts {
-  id: string // an orgSlug/jobSlug composite (a search result's id) or a full WTTJ job URL
+  // An orgSlug/jobSlug composite (a search result's id), a full WTTJ job URL,
+  // or a bare job reference (a result's wk_reference like "SKIIL_kyzZ6Qw", or
+  // the uuid reference) — bare references cost one extra Algolia lookup.
+  id: string
   format: "json" | "plain"
 }
 
@@ -27,15 +39,23 @@ function renderPlain(job: JobDetailResult): string {
 }
 
 export async function runDetail(opts: DetailOpts): Promise<number> {
-  const ref = normalizeJobRef(opts.id)
-  if (!ref) {
+  let ref = normalizeJobRef(opts.id)
+  if (!ref && !looksLikeReference(opts.id)) {
     writeError(
-      `could not parse a job reference from "${opts.id}" — expected orgSlug/jobSlug or a full WTTJ job URL`,
+      `could not parse a job reference from "${opts.id}" — expected orgSlug/jobSlug, a full WTTJ job URL, ` +
+        `or a bare reference like "SKIIL_kyzZ6Qw"`,
       "BAD_ID",
     )
     return 1
   }
   try {
+    if (!ref) {
+      ref = await lookupJobRef(opts.id.trim())
+      if (!ref) {
+        writeError(`no job found for reference "${opts.id.trim()}"`, "NOT_FOUND")
+        return 1
+      }
+    }
     const body = await apiGet<{ job: WttjDetailJob }>(
       `/api/v1/organizations/${encodeURIComponent(ref.org)}/jobs/${encodeURIComponent(ref.slug)}`,
     )

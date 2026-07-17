@@ -31,7 +31,7 @@ The CLI runs without any install because it has zero runtime dependencies.
 | Command | Description |
 |---------|-------------|
 | `search` | Search jobs by keyword and facet filters |
-| `detail` | Fetch full detail for a single job by `orgSlug/jobSlug` or URL |
+| `detail` | Fetch full detail for a single job by `orgSlug/jobSlug`, URL, or bare reference (`SKIIL_kyzZ6Qw` / uuid) |
 
 `search` accepts `--format json|table|plain` (default `json`); `detail` accepts `--format json|plain`.
 All errors are written to **stderr** as `{ "error": "...", "code": "..." }` with exit code `1`.

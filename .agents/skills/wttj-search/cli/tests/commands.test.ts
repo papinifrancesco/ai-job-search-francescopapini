@@ -33,6 +33,18 @@ function mockFetch(status: number, body: unknown): void {
     })) as typeof fetch;
 }
 
+/** Serve responses in order — for flows that make more than one request. */
+function mockFetchSequence(responses: Array<{ status: number; body: unknown }>): void {
+  let i = 0;
+  globalThis.fetch = (async () => {
+    const r = responses[Math.min(i++, responses.length - 1)];
+    return new Response(JSON.stringify(r.body), {
+      status: r.status,
+      headers: { "content-type": "application/json" },
+    });
+  }) as typeof fetch;
+}
+
 function hit(overrides: Partial<WttjHit> = {}): WttjHit {
   return {
     slug: "senior-data-engineer_paris",
@@ -154,6 +166,47 @@ describe("runDetail (mocked fetch)", () => {
     });
     expect(code).toBe(0);
     expect(JSON.parse(out.get()).org_slug).toBe("skiils");
+  });
+
+  test("resolves a bare WK-style reference via an Algolia lookup first", async () => {
+    mockFetchSequence([
+      // The reference lookup: one result per queried index; the second (CMS
+      // lookup index) knows the reference.
+      {
+        status: 200,
+        body: {
+          results: [
+            { hits: [], nbHits: 0, nbPages: 0, page: 0 },
+            { hits: [{ slug: "ia-engineer-h-f", name: "IA Engineer H/F", organization: { slug: "skiils" } }], nbHits: 1, nbPages: 1, page: 0 },
+          ],
+        },
+      },
+      { status: 200, body: { job: detailJob } },
+    ]);
+    const out = captureStdout();
+
+    const code = await runDetail({ id: "SKIIL_kyzZ6Qw", format: "json" });
+    expect(code).toBe(0);
+
+    const parsed = JSON.parse(out.get());
+    expect(parsed.id).toBe("skiils/ia-engineer-h-f");
+    expect(parsed.org_slug).toBe("skiils");
+  });
+
+  test("an unknown bare reference exits 1 with NOT_FOUND", async () => {
+    mockFetch(200, {
+      results: [
+        { hits: [], nbHits: 0, nbPages: 0, page: 0 },
+        { hits: [], nbHits: 0, nbPages: 0, page: 0 },
+      ],
+    });
+    const err = captureStderr();
+
+    const code = await runDetail({ id: "NOPE_xxxxxxx", format: "json" });
+    err.restore();
+
+    expect(code).toBe(1);
+    expect(JSON.parse(err.get()).code).toBe("NOT_FOUND");
   });
 
   test("404 exits 1 with NOT_FOUND", async () => {

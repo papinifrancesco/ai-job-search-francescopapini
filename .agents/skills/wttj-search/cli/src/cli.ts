@@ -75,7 +75,7 @@ const HELP = `wttj-cli — search Welcome to the Jungle (France) job listings
 
 USAGE
   bun run src/cli.ts search [-q "<keywords>"] [filter flags] [--format json|table|plain]
-  bun run src/cli.ts detail <orgSlug/jobSlug|url> [--format json|plain]
+  bun run src/cli.ts detail <orgSlug/jobSlug|url|reference> [--format json|plain]
 
 SEARCH FLAGS
   --query, -q <text>      Keywords (title, company, role). Full-text; optional.
@@ -98,8 +98,11 @@ SEARCH FLAGS
   --format <fmt>          json (default) | table | plain.
 
 DETAIL
-  <orgSlug/jobSlug|url>   A search result's id (e.g. algolia/senior-data-engineer)
-                          or a full welcometothejungle.com job URL.
+  <orgSlug/jobSlug|url|reference>
+                          A search result's id (e.g. algolia/senior-data-engineer),
+                          a full welcometothejungle.com job URL, or a bare job
+                          reference ("SKIIL_kyzZ6Qw" or the uuid form; resolved
+                          via one extra Algolia lookup).
 
 EXAMPLES
   bun run src/cli.ts search -q "data engineer" -l Paris --jobage 14 --limit 10 --format table
@@ -170,7 +173,7 @@ async function main(): Promise<number> {
   if (cmd === "detail") {
     const id = (flags._ as string[])[1]
     if (!id) {
-      process.stderr.write(JSON.stringify({ error: "detail requires an <orgSlug/jobSlug|url>", code: "NO_ID" }) + "\n")
+      process.stderr.write(JSON.stringify({ error: "detail requires an <orgSlug/jobSlug|url|reference>", code: "NO_ID" }) + "\n")
       return 1
     }
     const fmt = (flags.format as string) || "json"

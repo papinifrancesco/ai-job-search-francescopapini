@@ -88,6 +88,18 @@ fields — `description`, `profile`, `recruitment_process` — which the CLI cle
 and joins. `urls[]` carries the canonical job-page URL; `apply_url` is the
 direct ATS link when present.
 
+## Bare-reference resolution
+
+`detail` also accepts a bare job reference and resolves it to the slug pair
+with one Algolia multi-query POST (`filters=reference:"<ref>"`, both requests
+in a single call):
+
+- **uuid form** (`f67501c9-…`): the market index's filterable `reference` facet.
+- **WK-style form** (`SKIIL_kyzZ6Qw`): NOT filterable on the market index
+  (there it is the un-faceted `wk_reference` field) — but on the worldwide
+  CMS index **`wk_cms_jobs_production`** the `reference` field carries exactly
+  this value and is filterable. Override with `WTTJ_ALGOLIA_LOOKUP_INDEX`.
+
 ## Job page URL pattern
 
 ```

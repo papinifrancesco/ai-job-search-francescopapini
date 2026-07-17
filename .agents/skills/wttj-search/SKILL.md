@@ -78,12 +78,14 @@ Key flags:
 ### Fetch full job detail
 
 ```bash
-bun run .agents/skills/wttj-search/cli/src/cli.ts detail <orgSlug/jobSlug|url> [--format json|plain]
+bun run .agents/skills/wttj-search/cli/src/cli.ts detail <orgSlug/jobSlug|url|reference> [--format json|plain]
 ```
 
-The reference is a search result's `id` (e.g. `skiils/ai-engineer-h-f`) or a
+The reference is a search result's `id` (e.g. `skiils/ai-engineer-h-f`), a
 full `welcometothejungle.com/.../companies/<org>/jobs/<slug>` URL in any
-locale. Returns the full description (the posting's description, "profil
+locale, or a bare WTTJ job reference — the WK-style value (`SKIIL_kyzZ6Qw`)
+or the uuid form — which is resolved to the slugs via one extra Algolia
+lookup. Returns the full description (the posting's description, "profil
 recherché" and recruitment-process sections joined as readable text), contract
 info, salary when published, offices, and the direct `apply_url`.
 
