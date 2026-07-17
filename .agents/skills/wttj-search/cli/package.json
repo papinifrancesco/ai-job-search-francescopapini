@@ -1,0 +1,20 @@
+{
+  "name": "wttj-cli",
+  "version": "1.0.0",
+  "description": "CLI for searching Welcome to the Jungle (France) job listings via the site's public Algolia search index — no authentication, zero runtime dependencies. Endpoints are swappable via WTTJ_ALGOLIA_APP_ID / WTTJ_ALGOLIA_API_KEY / WTTJ_ALGOLIA_INDEX / WTTJ_API_URL if the public key rotates.",
+  "type": "module",
+  "main": "src/cli.ts",
+  "bin": {
+    "wttj-search": "src/cli.ts"
+  },
+  "scripts": {
+    "start": "bun run src/cli.ts",
+    "test": "bun test --timeout 30000",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/bun": "latest"
+  }
+}
