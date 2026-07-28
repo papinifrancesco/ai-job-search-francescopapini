@@ -39,6 +39,70 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 <!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
 
+## STAR Candidates (Complete Manually)
+
+<!-- Added by /setup Path A from CV + LinkedIn. Fill in S/T/A/R before using in interviews. -->
+
+### Training two junior system engineers at TAI Solutions
+**Source:** CV - TAI Solutions role
+**What happened:** Took charge of training two of the team's four system engineers on ACS/RHEL operations.
+**Why it matters:** Mentoring, leadership without title, knowledge transfer.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### ACS Community→Enterprise version migrations including databases
+**Source:** LinkedIn - TAI Solutions role
+**What happened:** Planned and executed version migrations ahead of end-of-support, including Community→Enterprise transitions and database migrations, for clients with 500–1000 users.
+**Why it matters:** Project planning, risk management, "tell me about a complex technical project."
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### CIS/SELinux hardening and vulnerability management for enterprise clients
+**Source:** CV - TAI Solutions role
+**What happened:** Applied CIS-benchmark and SELinux hardening, TLS on all web components, and proactive vulnerability/patch management on RHEL estates.
+**Why it matters:** Security posture questions, compliance-heavy employers, "how do you keep systems secure?"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### AD/Kerberos integration troubleshooting with the Unix team at Montepaschi
+**Source:** LinkedIn - Microsoft role
+**What happened:** Resolved Active Directory and Kerberos integration issues in close coordination with the bank's Unix team; decided autonomously what to fix vs. escalate to Microsoft product teams.
+**Why it matters:** Cross-team collaboration, autonomy/judgment, deep troubleshooting stories.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Sole IT responsibility onboard, including GMDSS emergency communications
+**Source:** CV/LinkedIn - Costa Crociere role
+**What happened:** Ran a ship's entire IT infrastructure (staff + guests) and held responsibility for GMDSS-standard emergency communications, coordinating with shoreside IT.
+**Why it matters:** Working under pressure, accountability, isolated-environment problem solving.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Teaching Microsoft courses in English at NATO and UN bases
+**Source:** CV/LinkedIn - MCT role
+**What happened:** Delivered quality-scored MOC courses in English to experienced sysadmins at NATO AFSOUTH, the UN Logistics Base Brindisi, and the UN Mission in Liberia.
+**Why it matters:** Communication skills, adapting to audiences, working in international/high-security contexts.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
 ## Common Tough Questions
 
 ### "Why did you leave [previous company]?"

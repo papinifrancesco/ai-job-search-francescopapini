@@ -1,10 +1,7 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Francesco Papini
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Francesco Papini, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
@@ -13,70 +10,73 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
-
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
-- **Languages:** [YOUR_LANGUAGES]
-- **CV language:** [YOUR_CV_LANGUAGE] <!-- English unless your market expects otherwise; /setup asks -->
-
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Name:** Francesco Papini
+- **Location:** Nice, France (Nice/Sophia Antipolis ideal; commutable Côte d'Azur acceptable; **not relocating**, no travel)
+- **Languages:** Italian (native), English (full professional), Portuguese (full professional), French (professional working)
+- **CV language:** French
+- **Status:** Employed — ACSCA at TAI Solutions (remote from Nice; company near Pisa, Italy)
+- **LinkedIn headline:** "Senior Linux/Windows System Engineer #notrelocating"
+- **Nationality:** Italian (not French — postings that explicitly require French nationality are out)
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **Diploma of Higher Education in Computing Studies (BAC+2)** (2011-2019) - University of London
+  - Completed part-time alongside full-time work
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Alfresco Content Services Certified Administrator (ACSCA)** (Aug 2018 - Present) - **TAI Solutions** (remote from Nice; clients in Italy)
+  - Senior system engineer on RHEL-based environments (CentOS/Oracle/Rocky), specializing in Alfresco Content Services for large Italian enterprises (500-1000 users each)
+  - Version migrations (incl. Community→Enterprise and databases), CIS/SELinux hardening, TLS on httpd/Nginx/Tomcat, vulnerability and patch management
+  - Trains two of the team's four system engineers; collaborates with the dev team on product extensions
+- **Microsoft Certified Systems Engineer (MCSE)** (Aug 2012 - Jul 2018) - **Microsoft, onsite at Montepaschi** (Florence, Italy)
+  - 3rd-level support and ticket coordination: Active Directory, TMG, BizTalk, SQL Server, Hyper-V/VMware in a regulated banking environment
+  - AD/GPO hardening, WSUS patching, AD/Kerberos troubleshooting with the Unix team
+- **IT Officer** (Jan 2008 - Jul 2012) - **Costa Crociere** (onboard)
+  - Sole responsibility for shipboard IT infrastructure and GMDSS emergency communications
+- **System Engineer** (Sep 2003 - Dec 2007) - **ElsagDatamat** (Genoa, Italy)
+  - ~500-server Windows estates for defense-sector clients; AD, ISA, PKI, Exchange; security checks with Nmap/Nessus/Wireshark
+- **Microsoft Certified Trainer** (Jan 2000 - Sep 2003) - **Freelance** (Italy + NATO/UN bases)
+  - MOC courses in English at NATO AFSOUTH, UN Logistics Base Brindisi, UN Mission in Liberia
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
+- **Primary:** Active Directory, Alfresco Content Services, Windows Server, Wireshark, teaching/training
+- **Secondary:** RHEL/Rocky Linux, PostgreSQL, PowerShell, shell scripting, Hyper-V, VMware, Alfresco Process Services
+- **Domain:** Security hardening (CIS, SELinux, GPO), vulnerability/patch management, TLS, enterprise content management (ECM/GED), middleware (Tomcat, Jetty, Solr, ActiveMQ, httpd, Nginx)
+- **Software:** Docker/Kubernetes/LaTeX/Debian/MySQL/SUSE (novice tier); Claude Code for AI-assisted tooling
 
 ### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+- **Alfresco Content Services Certified Administrator (ACSCA)**
+- **Microsoft Certified Systems Engineer (MCSE)** / **Microsoft Certified Trainer (MCT)**
+- **Wireshark: Network Troubleshooting**
+- **Anthropic:** Claude 101, AI Fluency: Framework & Foundations, AI Fluency for Educators, Introduction to Agent Skills
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+- None (industry career; authored client installation/maintenance manuals)
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+- None listed
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+*(inferred from LinkedIn/CV — no formal assessment on file)*
+- **Continuous learner** - 25-year certification trail, most recently Anthropic AI courses; degree completed part-time over 8 years
+- **Teacher/mentor** - MCT background, teaching rated "Expert", currently training junior engineers
+- **Strengths:** autonomous judgment (fix vs. escalate), long-term platform ownership, security-minded in every role, calm sole-responsibility operator
+- **Growth areas:** container orchestration (Docker/K8s novice) — frame as modernizing; BAC+2 degree — frame as 25 years of certified field experience
+- **Thrives in:** deep multi-year ownership of a platform, embedded client-facing expert roles, remote work with a distant team
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+- No single declared passion; motivated by stability, autonomy, and continuous learning rather than a specific technology
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+- IT services / ECM-GED consulting (Alfresco ecosystem partners)
+- Enterprise/regulated in-house IT (banking-style environments are familiar ground)
+- Any sector within Nice/Sophia Antipolis or remote; tech hub Sophia Antipolis is the natural pool
 
 ### Deal-breakers
-<!-- Hard constraints on job search -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+- Relocation (Nice area only)
+- Travel
+- Postings explicitly requiring French nationality (defense/sovereignty roles)
+- Salary baseline: 42 000 EUR/year gross — flag postings clearly below
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)

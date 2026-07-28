@@ -1,8 +1,8 @@
-%% Example CV - [YOUR_NAME]
+%% Example CV - Francesco Papini
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
+%% CV language: French (per profile setting in CLAUDE.md).
 %%
-%% SETUP: Run /setup to populate this with your actual information.
 %% Compile with: lualatex main_example.tex
 %% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
@@ -24,18 +24,19 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Francesco Papini - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
+\usepackage{needspace}
 
 % personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Francesco}{Papini}
+\address{Nice, France}{}{}
+\phone[mobile]{+33~6~80~87~49~21}
+\email{francescopapini@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/francesco-papini/}{LinkedIn}, \href{https://github.com/papinifrancesco}{GitHub}}
 
 \begin{document}
 
@@ -46,25 +47,27 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{Ingénieur système senior avec 25 ans d'expérience en environnements Linux (RHEL/CentOS/Oracle/Rocky) et Windows, spécialisé dans l'administration d'Alfresco Content Services pour de grandes entreprises (500 à 1000 utilisateurs par client). Durcissement systématique des systèmes (benchmarks CIS, SELinux), gestion des vulnérabilités et des correctifs, migrations de versions sans interruption de service. Certifié ACSCA, MCSE et MCT ; formateur expérimenté, de la formation officielle Microsoft (OTAN, Nations Unies) à l'encadrement d'ingénieurs juniors.}
 
 % ============================================================
 %     CORE COMPETENCIES
 % ============================================================
 
-\section{Core Competencies}
+\section{Compétences clés}
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{Administration Linux}: RHEL/CentOS/Oracle/Rocky Linux, scripts shell, SELinux, gestion des correctifs et des vulnérabilités (OpenSCAP, Nessus, Nmap).
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{Alfresco Content Services (ACSCA)}: dimensionnement, installation et réglage fin des composants (Tomcat, Jetty, Solr6, ActiveMQ, PostgreSQL/MySQL), migrations de versions y compris Community vers Enterprise.
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Sécurité}: durcissement selon les benchmarks CIS, TLS sur les composants web (httpd, Nginx, Tomcat), pare-feu (ISA/TMG), GPO et politiques Active Directory, PKI.
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Environnements Windows}: Windows Server, Active Directory, Kerberos, WSUS, Hyper-V, VMware, PowerShell.
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Formation et encadrement}: Microsoft Certified Trainer (cours MOC en anglais, OTAN et Nations Unies), formation d'ingénieurs juniors en poste.
+
+\item \textbf{Outillage assisté par IA}: utilisation de Claude Code pour l'automatisation et l'outillage d'exploitation (certifications Anthropic 2025--2026).
 
 \end{itemize}
 
@@ -72,36 +75,57 @@
 %     PROFESSIONAL EXPERIENCE
 % ============================================================
 
-\section{Professional Experience}
+\section{Expérience professionnelle}
 \vspace{3pt}
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY--Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2018--Présent}{Alfresco Content Services Certified Administrator (ACSCA)}{TAI Solutions}{à distance depuis Nice (clients en Italie)}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Ingénieur système senior sur des environnements RHEL, spécialisé Alfresco Content Services pour de grandes entreprises italiennes (500 à 1000 utilisateurs ACS par client)
+    \item Planification et exécution des migrations de versions avant fin de support, y compris Community vers Enterprise et bases de données associées
+    \item Durcissement des systèmes (benchmarks CIS, SELinux), chiffrement TLS (httpd, Nginx, Tomcat), analyses de vulnérabilités et gestion proactive des correctifs
+    \item Formation de deux des quatre ingénieurs système de l'équipe ; collaboration étroite avec l'équipe de développement pour les extensions produit
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2012--2018}{Microsoft Certified Systems Engineer (MCSE)}{Microsoft, sur site Montepaschi}{Florence, Italie}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Support de niveau 3 et coordination des tickets spécialisés dans un environnement bancaire hautement réglementé
+    \item Active Directory, TMG, BizTalk, SQL Server, virtualisation Hyper-V et VMware
+    \item Durcissement des serveurs Windows et des politiques de sécurité (GPO), gestion des correctifs (WSUS), résolution des intégrations Active Directory/Kerberos avec l'équipe Unix
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Earlier Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+% --- Earlier Roles ---
+\needspace{5\baselineskip}
+\item{\cventry{2008--2012}{IT Officer}{Costa Croisières}{à bord}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Responsable de l'ensemble de l'infrastructure informatique du navire (équipage et passagers) et des communications d'urgence selon le standard GMDSS
+    \item Sécurisation de l'infrastructure réseau embarquée et durcissement des serveurs en environnement isolé
+\end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{2003--2007}{Ingénieur système}{ElsagDatamat}{Gênes, Italie}{}{\vspace{1pt}
+\begin{itemize}
+    \item Déploiement et support de projets Windows (\textasciitilde{}500 serveurs) pour des clients du secteur de la défense (Finmeccanica, Ansaldo, Otomelara) sous différents SLA
+    \item Pare-feu ISA Server, PKI, Exchange ; contrôles de sécurité avec Nmap et Nessus, analyse de trafic avec Wireshark
+\end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{2000--2003}{Microsoft Certified Trainer}{Freelance}{Italie et international}{}{\vspace{1pt}
+\begin{itemize}
+    \item Cours MOC dispensés en anglais à la base OTAN AFSOUTH (Naples), à la base logistique des Nations Unies (Brindisi) et à la mission des Nations Unies au Libéria (Monrovia)
+    \item Formation d'administrateurs système expérimentés, évaluée selon les standards de qualité Microsoft
 \end{itemize}}}
 
 \end{itemize}
@@ -110,60 +134,47 @@
 %     EDUCATION
 % ============================================================
 
-\section{Education}
+\section{Formation}
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
+\item{\cventry{2011--2019}{Diploma of Higher Education in Computing Studies (BAC+2)}{University of London}{Londres (à distance)}{}{\vspace{1pt}
+Diplôme obtenu en cours du soir, en parallèle d'une activité professionnelle à temps plein.
 }}
 
-\vspace{3pt}
+\end{itemize}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
+% ============================================================
+%     CERTIFICATIONS
+% ============================================================
 
+\section{Certifications}
+\vspace{1pt}
+\begin{itemize}
+\item \textbf{Alfresco Content Services Certified Administrator (ACSCA)}
+\item \textbf{Microsoft Certified Systems Engineer (MCSE)} ; \textbf{Microsoft Certified Trainer (MCT)}
+\item Wireshark: Network Troubleshooting
+\item Anthropic : Claude 101, AI Fluency (Framework \& Foundations, Educators), Introduction to Agent Skills
 \end{itemize}
 
 % ============================================================
 %     LANGUAGES
 % ============================================================
 
-\section{Languages}
+\section{Langues}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item Italien (langue maternelle), anglais (courant), portugais (courant), français (professionnel).
 \end{itemize}
 
 % ============================================================
 %     REFERENCES
 % ============================================================
 
-\section{References}
+\section{Références}
 \vspace{1pt}
 \begin{itemize}
-\item{Available upon request.}
+\item{Disponibles sur demande.}
 \end{itemize}
 
 \end{document}

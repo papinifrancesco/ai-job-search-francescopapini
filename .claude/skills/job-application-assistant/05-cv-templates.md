@@ -109,12 +109,13 @@ Write 5-7 lines that function as an "elevator pitch": a concise, compelling intr
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**For Ingénieur Système Linux roles (CV language: French):**
+> Ingénieur système senior avec 25 ans d'expérience en environnements Linux (RHEL/CentOS/Oracle/Rocky) et Windows, spécialisé dans l'administration de plateformes critiques pour de grandes entreprises. Durcissement systématique des systèmes (benchmarks CIS, SELinux), gestion des vulnérabilités et des correctifs, migrations sans interruption de service. Certifié ACSCA et MCSE ; formateur expérimenté ayant pris en charge la montée en compétence d'ingénieurs juniors.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For Alfresco / ECM-GED Administrator roles (CV language: French):**
+> Administrateur certifié Alfresco Content Services (ACSCA) avec 8 ans d'expérience dédiée à la plateforme pour des clients de 500 à 1000 utilisateurs : dimensionnement, installation fine des composants (Tomcat, Solr, ActiveMQ, PostgreSQL), migrations de versions y compris Community vers Enterprise, sécurisation TLS et durcissement des systèmes RHEL sous-jacents. 25 ans d'expérience système en environnements exigeants (banque, défense).
+
+Both statements are grounded in `01-candidate-profile.md`. Adapt the final sentence per posting; keep the certifications and the 500-1000-user scale claim — they are the differentiators.
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 

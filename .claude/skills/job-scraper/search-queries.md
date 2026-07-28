@@ -1,81 +1,115 @@
 # Search Queries for Job Scraper
 
-<!-- SETUP: Customize these queries based on your skills, target roles, and location -->
+Personalized for Francesco Papini (Nice, France) - senior Linux system engineer /
+Alfresco-ECM administrator. CV language: French; postings are mostly French.
 
 ## Installed portal CLIs (primary for `/scrape`)
 
-`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`; Danish demos and any skill you add with `/add-portal` are included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
+`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first.
+Active portals for this fork:
 
-The `site:` query templates in this file are the **WebSearch fallback** — for portals without a CLI, company career pages, or when a CLI fails.
+- **wttj-search** (Welcome to the Jungle, FR) - the primary French board. Use exact accented
+  city spellings. **Always add `--country FR` on remote queries** (the index carries non-FR
+  offices). Salary is shown when published - compare against the 42k EUR baseline.
+- **linkedin-search** - country-agnostic, filter to France / Nice area.
+- **freehire-search** - country-agnostic.
+- Danish demo portals (jobbank/jobdanmark/jobindex/jobnet) are installed but `enabled: false`.
+
+The `site:` query templates below are the **WebSearch fallback** - for boards without a CLI
+(APEC, Indeed France) or when a CLI fails.
 
 ## Search Sites
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY]); also covered by `linkedin-search` CLI
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
-
-Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
+Primary (CLIs): Welcome to the Jungle, LinkedIn.
+Fallback (WebSearch):
+- **apec.fr** - the French cadres board; strong for ingénieur système roles
+- **fr.indeed.com** - volume aggregator
+- Company career pages of Sophia Antipolis employers via `site:` searches
 
 ## Query Categories
 
-Queries are grouped by priority. Each query should be combined with your location terms (e.g. your city, region, or metro area) where the site supports it.
+Combine every query with the location tiers below. Portal flags: `--jobage 14`, `--limit 20`.
 
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
+### Priority 1: Ingénieur Système Linux
 
-These match your strongest and most desired career direction.
+The primary target role.
 
+WTTJ CLI:
 ```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_COUNTRY]
+search -q "ingénieur système linux" -l "Nice,Sophia Antipolis" --jobage 14
+search -q "administrateur système linux" -l "Nice,Sophia Antipolis,Antibes,Valbonne,Biot" --jobage 14
+search -q "ingénieur système linux" --remote fulltime --country FR --jobage 14
 ```
-
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
-
-These match your domain expertise.
-
+WebSearch fallback:
 ```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
+site:apec.fr "ingénieur système linux" Nice OR "Sophia Antipolis"
+site:fr.indeed.com "administrateur système" linux Nice
+site:linkedin.com/jobs "ingénieur système linux" France Nice
 ```
 
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
+### Priority 2: Alfresco / ECM / GED Administrator
 
-Adjacent roles you could pivot into.
+The differentiating specialty - lower volume, much higher fit. Run without a location
+filter first (Alfresco roles are rare; remote is plausible), then filter by location tier.
 
+WTTJ CLI:
 ```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
+search -q "alfresco" --country FR --jobage 14
+search -q "administrateur GED" --country FR --jobage 14
+search -q "ECM gestion documentaire" --country FR --jobage 14
+```
+WebSearch fallback:
+```
+site:apec.fr alfresco OR "GED" administrateur
+site:fr.indeed.com alfresco administrateur France
 ```
 
-### Priority 4: Broader Technical / Consulting
+### Priority 3: Adjacent - Windows/AD, sécurité opérationnelle, DevOps-ops
 
-Wider net for general technical roles.
+Roles the 25-year profile could pivot into without container/cloud depth.
 
+WTTJ CLI:
 ```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+search -q "ingénieur systèmes et réseaux" -l "Nice,Sophia Antipolis" --jobage 14
+search -q "administrateur windows active directory" -l "Nice,Sophia Antipolis" --jobage 14
+search -q "sécurité systèmes durcissement" --country FR --jobage 14
+```
+
+### Priority 4: Broader - formation technique, support N3
+
+Wider net; includes the teaching thread.
+
+WTTJ CLI:
+```
+search -q "formateur technique informatique" -l "Nice,Sophia Antipolis" --jobage 14
+search -q "support niveau 3 linux" --country FR --remote fulltime --jobage 14
 ```
 
 ## Location Filter
 
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
+- **Ideal:** Nice, Sophia Antipolis (incl. Valbonne, Biot)
+- **Acceptable:** commutable Côte d'Azur - Antibes, Cagnes-sur-Mer, Villeneuve-Loubet, Cannes, Monaco
+- **Acceptable:** full remote (France or cross-border, as with the current Italian employer)
+- **Too far / FAIL:** anything requiring relocation; any role with regular travel
+
+WTTJ's `offices.city` facet needs the site's exact spellings (accents included); Sophia
+Antipolis companies often list their office as Valbonne, Biot, or Antibes - include those
+spellings when filtering by city.
+
+## Hard Filters (apply when triaging results)
+
+- **Nationality:** skip postings explicitly requiring French nationality (défense /
+  souveraineté / habilitation Secret Défense clauses) - Francesco holds Italian nationality
+  only. EU-citizen-eligible postings are fine.
+- **Travel:** skip roles with regular travel ("déplacements fréquents").
+- **Salary:** baseline 42 000 EUR/year gross - flag postings clearly below when salary is published.
 
 ## Date Filter
 
-Only include jobs posted within the last 14 days, or with an application deadline that has not yet passed. If a posting date cannot be determined, include it but flag as "date unknown".
+Only include jobs posted within the last 14 days, or with an application deadline that has
+not yet passed. If a posting date cannot be determined, include it but flag as "date unknown".
 
 ## Adapting Queries
 
-If the user specifies a focus area, select queries from the matching category and also generate 2-3 custom queries for that focus. For example:
-- "/scrape [focus_area]" -> relevant category queries + custom focus-specific queries
+If the user specifies a focus area (e.g. `/scrape alfresco`, `/scrape sécurité`), run that
+category's queries plus 2-3 custom variations for the focus.

@@ -4,51 +4,46 @@ framework_version: 1.0.0
 
 # Behavioral Profile
 
-<!-- SETUP: This file is populated by running /setup -->
-<!-- You can use results from PI, DISC, Myers-Briggs, StrengthsFinder, or a self-assessment -->
+> No formal assessment (PI/DISC/MBTI) on file. Everything below is inferred from
+> the LinkedIn About section, role descriptions, and career trajectory —
+> *[Inferred from LinkedIn About / CV - review before relying on this]*.
 
 ## Overview
-[YOUR_NAME]'s behavioral assessment identifies them as a **[PROFILE_TYPE]** pattern. [1-2 SENTENCE_SUMMARY].
+Francesco's profile reads as a **steady, autonomous practitioner-teacher** pattern: 25 years of hands-on systems engineering, consistently self-updating (a certification trail from MCSE to Anthropic's agent-skills courses), who repeatedly ends up in the roles of trainer, mentor, and the person trusted to decide what to fix and what to escalate.
 
-## Core Behavioral Drives
+## Strongest Behavioral Traits
+- **Continuous learner:** *[Inferred from LinkedIn About]* — "I enjoy finding new challenges and opportunities to learn and grow in my field." Backed by behavior: certifications earned across every era of his career, most recently AI/Claude tooling (2025–2026), and a university diploma completed part-time over 8 years alongside full-time work.
+- **Natural teacher and mentor:** *[Inferred from CV/LinkedIn]* — three years as a Microsoft Certified Trainer (quality-scored on ability to adapt to each student), teaching listed as an "Expert" skill, and currently responsible for training two of the four system engineers on his team.
+- **Autonomous judgment under responsibility:** *[Inferred from LinkedIn]* — the Montepaschi role "required autonomy in determining which issues to troubleshoot independently and which ones to escalate"; at Costa he was singly responsible for a ship's entire IT plus GMDSS emergency communications.
+- **Security-minded by default:** *[Inferred from CV]* — hardening, vulnerability scanning, and patch discipline appear in every single role since 2003, unprompted by job titles.
 
-| Drive | Level | Meaning |
-|-------|-------|---------|
-| [DRIVE_1] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_2] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_3] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_4] | [LEVEL] | [DESCRIPTION] |
-
-## Strongest Behaviors
-- **[BEHAVIOR_1]:** [DESCRIPTION]
-- **[BEHAVIOR_2]:** [DESCRIPTION]
-- **[BEHAVIOR_3]:** [DESCRIPTION]
-
-## How You Work Best
-- [ENVIRONMENT_PREFERENCE_1]
-- [ENVIRONMENT_PREFERENCE_2]
-- [ENVIRONMENT_PREFERENCE_3]
+## How Francesco Works Best
+- *[Inferred]* Long tenures (4–8 years per role) suggest he thrives with depth: owning a platform end-to-end and improving it over years, rather than rotating fast between projects.
+- *[Inferred]* Comfortable as the embedded expert working directly with client teams (Montepaschi, TAI clients) — bridging vendor, customer, and development teams.
+- *[Inferred]* Works well remotely with a distant team (Nice → Pisa since 2018).
 
 ## Growth Areas (frame positively in applications)
-- **[AREA_1]:** [HOW_TO_FRAME_IT_POSITIVELY]
-- **[AREA_2]:** [HOW_TO_FRAME_IT_POSITIVELY]
+- **Container orchestration (Docker/Kubernetes) is self-rated novice:** frame as actively modernizing — the platform work (Tomcat/Solr/ActiveMQ topologies) is exactly what containerization maps onto.
+- **No formal degree beyond BAC+2:** frame as 25 years of certified, field-proven expertise; the part-time diploma shows follow-through.
 
 ## Mapping to Job Posting Language
 
-When a job posting mentions these keywords, it's a **strong behavioral fit**:
-- [KEYWORD_OR_PHRASE_THAT_MATCHES_YOUR_STYLE]
-- [ANOTHER_KEYWORD]
+Strong behavioral fit when a posting mentions:
+- autonomy, ownership, "you'll be the reference person", client-facing engineer
+- mentoring, knowledge transfer, training users or junior staff
+- long-term platform responsibility, reliability, security hardening, compliance
 
-When a job posting mentions these, flag as **potential friction** (not deal-breaker):
-- [KEYWORD_OR_PHRASE_THAT_MIGHT_CLASH]
-- [ANOTHER_KEYWORD]
+Potential friction (not deal-breakers) when a posting mentions:
+- relocation or heavy travel (**hard deal-breaker: not relocating from Nice**)
+- pure greenfield development roles with no operations component
+- rigid junior-level supervision (he is used to autonomy)
 
 ## Management Style Preferences
-- [WHAT_MANAGEMENT_STYLE_WORKS_FOR_YOU]
-- [WHAT_DOESN'T_WORK]
+- *[Inferred]* Works best under managers who set requirements and trust him with the how — every role since 2012 highlights autonomous troubleshooting/escalation judgment.
+- *[Inferred]* Values being consulted as the technical expert; long client relationships suggest he prefers stable teams over churn.
 
 ## Using This in Applications
-- **Cover letters:** [HOW_TO_WEAVE_IN_BEHAVIORAL_STRENGTHS]
-- **CV:** [WHAT_TO_EMPHASIZE]
-- **Interviews:** [WHAT_STAR_EXAMPLES_TO_USE]
-- **Don't overstate:** [WHAT_NOT_TO_CLAIM]
+- **Cover letters:** lead with ownership + security discipline + the teaching thread (rare combination for senior sysadmin roles).
+- **CV:** the 25-year arc is the asset — show progression Windows → Linux → AI-assisted operations, not just a skills list.
+- **Interviews:** STAR examples on training juniors, autonomous escalation decisions, and zero-downtime migrations.
+- **Don't overstate:** Kubernetes/Docker (novice), development skills (he integrates and operates Java platforms; he is not a Java developer), French (professional working, not native).

@@ -20,9 +20,9 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** Linux system administration (RHEL/CentOS/Oracle/Rocky), Alfresco Content Services / ECM-GED, Windows Server, Active Directory, security hardening (CIS, SELinux, GPO, TLS), vulnerability/patch management, middleware (Tomcat, Jetty, Solr, ActiveMQ, httpd, Nginx), Wireshark/network troubleshooting, technical training
+**Moderate match areas:** PostgreSQL/MySQL administration, PowerShell/shell scripting, Hyper-V/VMware virtualization, Alfresco Process Services, monitoring
+**Weak match areas:** Docker/Kubernetes (novice), public cloud (AWS/Azure/GCP — no professional experience), software development (operates Java platforms, is not a developer), CI/CD tooling, native-level written French
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for?
@@ -34,9 +34,9 @@ Does work history align with what they're looking for?
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** senior Linux/Windows system engineering, ECM platform administration (Alfresco), embedded client-facing support in regulated environments (banking, defense clients), IT training/instruction
+**Moderate:** DevOps-adjacent roles (strong ops, weak container/CI-CD side), infrastructure security roles (hardening/vuln management is proven; no SOC/pentest background), team lead (informal mentoring, no formal management title)
+**Entry-level:** cloud engineering, Kubernetes platform roles, software development
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -51,10 +51,11 @@ Does the role and company culture match the behavioral profile?
 **Red flags to research:** Department disorganization, work dominated by maintenance over development, poor chemistry with leadership, culture mismatches. Check reviews, media coverage, LinkedIn connections, and network contacts for insider perspective.
 
 ### 4. Location & Logistics (Pass/Fail + Notes)
-- Within commute range: PASS
-- Remote with occasional office: PASS
-- Requires relocation: FAIL (deal-breaker)
-- Frequent international travel: FLAG (discuss with user)
+- Nice / Sophia Antipolis, or commutable Côte d'Azur: PASS
+- Remote (France or cross-border, as with current TAI setup): PASS
+- Requires relocation: FAIL (deal-breaker — "#notrelocating")
+- Travel required (any regular travel): FAIL (deal-breaker)
+- Posting explicitly requires French nationality (défense/souveraineté clauses): FAIL — Francesco holds Italian nationality only. EU-citizen-eligible postings are fine.
 
 ### 5. Career Alignment & Motivation (0-100)
 Does this role advance career goals and contain tasks that energize?
@@ -67,19 +68,19 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- A stable senior Linux system engineer or Alfresco/ECM administrator role anchored in Nice/Sophia Antipolis (or remote), replacing or improving on the current position
+- Keep the security-hardening and platform-ownership profile central; no pivot into pure development or heavy travel consulting
+- Continue modernizing (containers, AI-assisted operations with Claude Code) from a position of stability
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
-- Non-task factors: leadership style, department culture, company values, degree of autonomy
+- Tasks that energize: no single declared passion — weight stability, autonomy, and learning opportunity over "exciting" tech (user's own words: nothing specific excites; treat inflated "passion" language in postings neutrally)
+- Tasks that drain: travel (deal-breaker, scored in Location), likely also high-churn project rotation given the long-tenure history *(inferred)*
+- Non-task factors: autonomy in how work is done, being trusted as the technical reference, stable long-term teams
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: employed — can afford to be selective; salary baseline 42 000 EUR/year gross (flag postings clearly below; French postings often omit salary — WTTJ carries it when published)
+- **Flexibility**: remote-friendly arrangements preferred (current role is remote from Nice)
+- **Professional development**: certifications matter to him — roles that fund/encourage them are a plus
 
 ### 6. Salary Benchmark (Optional)
 
