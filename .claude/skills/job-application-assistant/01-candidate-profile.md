@@ -1,5 +1,5 @@
 ---
-framework_version: 1.0.0
+framework_version: 1.1.1
 ---
 
 # Candidate Profile
@@ -11,9 +11,21 @@ framework_version: 1.0.0
 - **Email:** francescopapini@gmail.com
 - **LinkedIn:** https://www.linkedin.com/in/francesco-papini/
 - **GitHub:** https://github.com/papinifrancesco
-- **Languages:** Italian (native), English (full professional), Portuguese (full professional), French (professional working)
 - **Status:** Employed — Alfresco Content Services Certified Administrator at TAI Solutions (working from Nice for the Pisa-based company)
 - **Constraints:** **Not relocating** (stated in LinkedIn headline: "#notrelocating"). Nice area or remote.
+
+### Languages
+<!-- Every language you can work in professionally, with your honest level. Used by the
+Language Gate in 04-job-evaluation.md and by job-scraper/search-queries.md's query-language
+generation. Omit any language you don't actually work in - an undeclared language is treated as
+a hard no, not a gap to smooth over. -->
+
+| Language | Level | Notes |
+|----------|-------|-------|
+| Italian | Native | |
+| English | Full professional | |
+| Portuguese | Full professional | |
+| French | Professional working | CV language |
 
 ## Education
 

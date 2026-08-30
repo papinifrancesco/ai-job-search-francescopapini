@@ -13,7 +13,18 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 ### Identity
 - **Name:** Francesco Papini
 - **Location:** Nice, France (Nice/Sophia Antipolis ideal; commutable Côte d'Azur acceptable; **not relocating**, no travel)
-- **Languages:** Italian (native), English (full professional), Portuguese (full professional), French (professional working)
+- **Languages:**
+  | Language | Level |
+  |----------|-------|
+  | Italian | Native |
+  | English | Full professional |
+  | Portuguese | Full professional |
+  | French | Professional working |
+  <!-- Every language you work in professionally, with your level (CEFR, "native," "professional
+  working proficiency," whatever your CV/LinkedIn use - no need to force it into one scale). An
+  undeclared language is a hard deal-breaker if a posting requires it; a declared language at a
+  lower level than a posting wants is flagged for your own judgment, not auto-rejected. See
+  04-job-evaluation.md's Language Gate. -->
 - **CV language:** French
 - **Status:** Employed — ACSCA at TAI Solutions (remote from Nice; company near Pisa, Italy)
 - **LinkedIn headline:** "Senior Linux/Windows System Engineer #notrelocating"
@@ -73,6 +84,8 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 - Any sector within Nice/Sophia Antipolis or remote; tech hub Sophia Antipolis is the natural pool
 
 ### Deal-breakers
+<!-- Hard constraints on job search. Language requirements are handled separately and
+automatically from your Languages table above - don't duplicate them here. -->
 - Relocation (Nice area only)
 - Travel
 - Postings explicitly requiring French nationality (defense/sovereignty roles)
@@ -131,7 +144,7 @@ Both documents MUST be compiled and visually inspected via the Read tool on the 
 - [ ] **Cover letter bullet font matches body font** - `\lettercontent{}` must not wrap `\begin{itemize}...\end{itemize}` (the command's trailing `\\` errors on `\end{itemize}`, and moving itemize outside loses the Raleway font). Standard pattern: close `\lettercontent{}`, then wrap the list in `{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont \begin{itemize}...\end{itemize}\par}`
 
 ### ATS & keyword verification (CV)
-ATS parsers read the PDF's embedded text layer, not the rendered page. Extract it with `pdftotext -layout` and verify what a parser sees. `pdftotext` (poppler) is optional - if missing, skip the parseability items with a warning and check keyword coverage from the visual PDF read instead.
+ATS parsers read the PDF's embedded text layer, not the rendered page. Extract it with `python tools/verify_pdf.py cv/main_<company>_<role>.pdf --dump-text cv/main_<company>_<role>.txt` (pypdf, then `pdftotext -layout -enc UTF-8`) and verify what a parser sees. If both extractors are missing, skip the parseability items with a warning and check keyword coverage from the visual PDF read instead.
 - [ ] CV text layer extracts cleanly - no `(cid:*)` markers, `�` replacement characters, or text visible in the PDF but absent from the extraction
 - [ ] Email and phone appear as **literal text** in the extraction (icon-glyph noise like `MOBILE-ALT`/`Envelope` is harmless, but a contact detail carried only by an icon or hyperlink is invisible to ATS)
 - [ ] Reading order of the extracted text matches the visual order (single-column stock template is safe; multi-column custom templates are where this breaks)

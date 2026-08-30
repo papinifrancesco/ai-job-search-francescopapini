@@ -54,6 +54,34 @@ COMPOUND_PATTERNS = {"antal", "indeks", "løn", "gennemsnit", "medarbejdere"}
 ID_PATTERNS = {"id", "personnummer"}
 
 
+def parse_numeric_cell(value):
+    """Parse numeric Excel values, including localized string cells."""
+    if isinstance(value, (int, float)):
+        return float(value)
+    if not isinstance(value, str):
+        raise ValueError("not numeric")
+
+    text = value.strip().replace("\u00a0", " ").replace(" ", "")
+    if not text:
+        raise ValueError("not numeric")
+    if "," in text and "." in text:
+        # The separator that appears last is the decimal separator: European
+        # "1.234,56" and US "1,234.56" are both unambiguous here, unlike the
+        # single-separator cases below.
+        if text.rfind(",") > text.rfind("."):
+            text = text.replace(".", "").replace(",", ".")
+        else:
+            text = text.replace(",", "")
+    elif "," in text:
+        if re.fullmatch(r"[+-]?\d+,\d{3}", text):
+            raise ValueError("ambiguous comma separator")
+        text = text.replace(",", ".")
+    elif "." in text:
+        if re.fullmatch(r"[+-]?\d+\.\d{3}", text):
+            raise ValueError("ambiguous dot separator")
+    return float(text)
+
+
 def header_matches(header, patterns):
     """Return True when a header contains a meaningful pattern match.
 
@@ -73,10 +101,18 @@ def header_matches(header, patterns):
 
 
 def strip_type_patterns(header, patterns):
-    """Remove count/index words from a header to derive a category name."""
+    """Remove count/index words from a header to derive a category name.
+
+    Mirrors ``header_matches``: patterns strip as whole tokens, and any
+    pattern also listed in ``COMPOUND_PATTERNS`` additionally strips as a
+    substring - otherwise a compound header like "Lønindeks alle" keeps the
+    type word in its category name and can never pair with "Antal alle".
+    """
     name = header.lower()
     for p in patterns:
         name = re.sub(rf"(?<![a-zæøåöäü0-9]){re.escape(p)}(?![a-zæøåöäü0-9])", "", name)
+        if p in COMPOUND_PATTERNS:
+            name = name.replace(p, "")
     return name.strip(" _-")
 
 
@@ -189,11 +225,14 @@ def parse_sheet(ws, sheet_label=None):
     # Parse data rows
     companies = []
     for row in ws.iter_rows(min_row=header_row + 1, values_only=True):
-        if not row[company_col]:
+        if company_col >= len(row) or not row[company_col]:
             continue
 
         company_name = str(row[company_col]).strip()
-        city_name = str(row[city_col]).strip() if city_col is not None and row[city_col] else ""
+        if city_col is not None and city_col < len(row) and row[city_col]:
+            city_name = str(row[city_col]).strip()
+        else:
+            city_name = ""
 
         entry = {
             "company": company_name,
@@ -208,12 +247,12 @@ def parse_sheet(ws, sheet_label=None):
                 index_val = None
                 if cat["count_col"] < len(row) and row[cat["count_col"]] is not None:
                     try:
-                        count_val = int(row[cat["count_col"]])
+                        count_val = int(parse_numeric_cell(row[cat["count_col"]]))
                     except (ValueError, TypeError):
                         pass
                 if cat["index_col"] < len(row) and row[cat["index_col"]] is not None:
                     try:
-                        index_val = float(row[cat["index_col"]])
+                        index_val = parse_numeric_cell(row[cat["index_col"]])
                     except (ValueError, TypeError):
                         pass
                 # A count/index pair that is entirely empty for this row carries
@@ -225,7 +264,7 @@ def parse_sheet(ws, sheet_label=None):
                 if cat["value_col"] < len(row) and row[cat["value_col"]] is not None:
                     val = row[cat["value_col"]]
                     try:
-                        val = float(val)
+                        val = parse_numeric_cell(val)
                     except (ValueError, TypeError):
                         # Non-numeric standalone value (e.g. a free-text "Notes"
                         # column) is not salary data; skip it for this row.

@@ -18,6 +18,8 @@ Active portals for this fork:
 The `site:` query templates below are the **WebSearch fallback** - for boards without a CLI
 (APEC, Indeed France) or when a CLI fails.
 
+**Language scope:** write every query category in every language listed in your CLAUDE.md Languages table (typically 1-2, sometimes more). A posting requiring a language you have *not* declared, as a job condition, is excluded before scoring; a posting requiring a *higher level* than you declared in a language you *do* work in is flagged for your own judgment, not excluded — see `04-job-evaluation.md`'s Language Gate, the single source of truth for this rule. Translate each category's keywords rather than machine-translating word-for-word (e.g. "Frontend Developer" -> "Desarrollador Frontend", not a literal word-for-word translation) if you work in more than one language.
+
 ## Search Sites
 
 Primary (CLIs): Welcome to the Jungle, LinkedIn.
@@ -29,6 +31,8 @@ Fallback (WebSearch):
 ## Query Categories
 
 Combine every query with the location tiers below. Portal flags: `--jobage 14`, `--limit 20`.
+
+**Organize by function, not job title.** The same underlying work carries different titles across companies and markets (an "Ingénieur Système Linux" role at one employer may be posted as "Administrateur Systèmes" or "SysOps" at another). Name each priority category after the function it covers, and list several plausible job titles as query variants within that category rather than betting an entire priority tier on one exact title string.
 
 ### Priority 1: Ingénieur Système Linux
 
@@ -103,6 +107,10 @@ spellings when filtering by city.
   only. EU-citizen-eligible postings are fine.
 - **Travel:** skip roles with regular travel ("déplacements fréquents").
 - **Salary:** baseline 42 000 EUR/year gross - flag postings clearly below when salary is published.
+
+## Language Filter
+
+Your working languages and levels are in CLAUDE.md's Languages table. When filtering scraped results, apply `04-job-evaluation.md`'s Language Gate: a posting requiring a language you haven't declared at all is excluded; a posting requiring a higher level than you declared in a language you do work in is not excluded, flag it clearly instead (see `job-scraper/SKILL.md`'s Step 3 "Quick Fit Assessment" for how the flag surfaces in `/scrape` output). Postings simply *written* in a language you don't work in, that don't require it on the job, are fine.
 
 ## Date Filter
 
