@@ -51,8 +51,14 @@ ALLOWED_PERMISSIONS = {
     "Bash(bun run .agents/skills/freehire-search/cli/src/cli.ts:*)",
     "Bash(python salary_lookup.py:*)",
     "Bash(python3 salary_lookup.py:*)",
+    "Bash(python tools/rank_state.py:*)",
+    "Bash(python3 tools/rank_state.py:*)",
+    "Bash(python tools/job_key.py:*)",
+    "Bash(python3 tools/job_key.py:*)",
     "Bash(python tools/verify_pdf.py:*)",
     "Bash(python3 tools/verify_pdf.py:*)",
+    "Bash(python tools/verify_layout.py:*)",
+    "Bash(python3 tools/verify_layout.py:*)",
     "Bash(pdftotext:*)",
 }
 
@@ -80,6 +86,8 @@ REQUIRED_IGNORE_RULES = [
     "documents/references/**",
     "documents/applications/**",
     "documents/postings/**",
+    # Belt-and-braces, not the primary guard: nothing writes here.
+    # /interview's prep packs land under documents/applications/**, above.
     "documents/interview/**",
     "job_search_tracker.csv",
     "gmail_sync/",
