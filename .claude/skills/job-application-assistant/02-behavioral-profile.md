@@ -11,13 +11,16 @@ framework_version: 1.0.0
 ## Overview
 Francesco's profile reads as a **steady, autonomous practitioner-teacher** pattern: 25 years of hands-on systems engineering, consistently self-updating (a certification trail from MCSE to Anthropic's agent-skills courses), who repeatedly ends up in the roles of trainer, mentor, and the person trusted to decide what to fix and what to escalate.
 
-## Strongest Behavioral Traits
+## Core Behavioral Drives
+*No formal assessment (PI/DISC/MBTI) on file, so there are no scored drives to report. Fill in the table here if an assessment is taken later; until then, rely on the inferred traits below.*
+
+## Strongest Behaviors
 - **Continuous learner:** *[Inferred from LinkedIn About]* — "I enjoy finding new challenges and opportunities to learn and grow in my field." Backed by behavior: certifications earned across every era of his career, most recently AI/Claude tooling (2025–2026), and a university diploma completed part-time over 8 years alongside full-time work.
 - **Natural teacher and mentor:** *[Inferred from CV/LinkedIn]* — three years as a Microsoft Certified Trainer (quality-scored on ability to adapt to each student), teaching listed as an "Expert" skill, and currently responsible for training two of the four system engineers on his team.
 - **Autonomous judgment under responsibility:** *[Inferred from LinkedIn]* — the Montepaschi role "required autonomy in determining which issues to troubleshoot independently and which ones to escalate"; at Costa he was singly responsible for a ship's entire IT plus GMDSS emergency communications.
 - **Security-minded by default:** *[Inferred from CV]* — hardening, vulnerability scanning, and patch discipline appear in every single role since 2003, unprompted by job titles.
 
-## How Francesco Works Best
+## How You Work Best
 - *[Inferred]* Long tenures (4–8 years per role) suggest he thrives with depth: owning a platform end-to-end and improving it over years, rather than rotating fast between projects.
 - *[Inferred]* Comfortable as the embedded expert working directly with client teams (Montepaschi, TAI clients) — bridging vendor, customer, and development teams.
 - *[Inferred]* Works well remotely with a distant team (Nice → Pisa since 2018).
