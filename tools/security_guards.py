@@ -84,6 +84,7 @@ REQUIRED_IGNORE_RULES = [
     "documents/linkedin/**",
     "documents/diplomas/**",
     "documents/references/**",
+    "documents/projects/**",
     "documents/applications/**",
     "documents/postings/**",
     # Belt-and-braces, not the primary guard: nothing writes here.
@@ -109,6 +110,8 @@ REQUIRED_IGNORE_RULES = [
     # from commands, not a skill, so a plain rooted rule is correct here -
     # unlike the **/-prefixed job_scraper/upskill rules above.
     "company_research/*.json",
+    # Machine-local Claude Code user configuration and ad-hoc permissions approvals.
+    ".claude/settings.local.json",
 ]
 
 # Negation (re-include) rules the template legitimately ships. .gitignore is
